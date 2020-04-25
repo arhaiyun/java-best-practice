@@ -1,9 +1,7 @@
-package com.exodus.fundamentals.multithread;
-
 import java.util.Random;
 
 public class ThreadLocalTest {
-    public static class MyRunnable1 implements Runnable {
+    public static class MyRunnable implements Runnable {
 
         private ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
         private int test = 1;
@@ -25,7 +23,7 @@ public class ThreadLocalTest {
     public static void main(String[] args) {
         System.out.println(Runtime.getRuntime().availableProcessors());
         System.out.println("start");
-        MyRunnable1 runnable = new MyRunnable1();
+        MyRunnable runnable = new MyRunnable();
         Thread thread1 = new Thread(runnable);
         Thread thread2 = new Thread(runnable);
         thread1.start();

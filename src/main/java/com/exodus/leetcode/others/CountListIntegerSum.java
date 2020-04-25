@@ -1,4 +1,4 @@
-package com.exodus.leetcode;
+package com.exodus.leetcode.others;
 
 /**
  * @author arhaiyun
