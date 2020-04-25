@@ -1,5 +1,4 @@
-package com.exodus.arhaiyun.fundamentals.multithread;
-
+import com.exodus.arhaiyun.fundamentals.multithread.PriorityThreadPoolExecutor;
 import org.junit.Test;
 
 import java.util.concurrent.Callable;
@@ -7,7 +6,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author arhaiyun
