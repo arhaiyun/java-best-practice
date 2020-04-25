@@ -1,4 +1,4 @@
-package com.exodus.bytedance;
+package com.exodus.leetcode.bytedance;
 
 import java.util.Deque;
 import java.util.LinkedList;
