@@ -1,4 +1,4 @@
-import com.exodus.arhaiyun.fundamentals.multithread.PriorityThreadPoolExecutor;
+import com.exodus.fundamentals.multithread.PriorityThreadPoolExecutor;
 import org.junit.Test;
 
 import java.util.concurrent.Callable;
