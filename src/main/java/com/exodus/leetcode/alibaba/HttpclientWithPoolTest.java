@@ -1,4 +1,4 @@
-package com.exodus.alibaba;
+package com.exodus.leetcode.alibaba;
 
 import org.apache.http.HttpHost;
 import org.apache.http.client.HttpRequestRetryHandler;

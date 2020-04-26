@@ -1,4 +1,4 @@
-package com.exodus.alibaba;
+package com.exodus.leetcode.alibaba;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;

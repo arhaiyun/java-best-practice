@@ -1,4 +1,4 @@
-package com.exodus.alibaba;
+package com.exodus.leetcode.alibaba;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

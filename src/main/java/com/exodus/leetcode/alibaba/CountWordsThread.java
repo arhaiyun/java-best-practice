@@ -1,4 +1,4 @@
-package com.exodus.alibaba;
+package com.exodus.leetcode.alibaba;
 
 import java.io.File;
 import java.io.FileNotFoundException;

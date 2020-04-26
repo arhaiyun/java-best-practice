@@ -1,6 +1,6 @@
 package com.exodus.fundamentals.binarytree;
 
-import com.exodus.alibaba.CountWordsThread;
+import com.exodus.leetcode.alibaba.CountWordsThread;
 
 import java.io.File;
 import java.io.IOException;

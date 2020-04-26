@@ -1,4 +1,4 @@
-package com.exodus.alibaba;
+package com.exodus.leetcode.alibaba;
 
 import com.exodus.fundamentals.binarytree.DealFileText;
 
