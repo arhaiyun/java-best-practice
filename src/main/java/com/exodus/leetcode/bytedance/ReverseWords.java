@@ -27,6 +27,7 @@ package com.exodus.leetcode.bytedance;
  * Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.
  * You need to reduce multiple spaces between two words to a single space in the reversed string.
  *
+ *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/reverse-words-in-a-string
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
