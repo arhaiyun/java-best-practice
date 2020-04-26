@@ -1,12 +1,33 @@
 package com.exodus.leetcode.bytedance;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @author arhaiyun
  * @version 1.0
  * @date 2020/4/26 22:29
+ * <p>
+ * Given a collection of distinct integers, return all possible permutations.
+ * <p>
+ * Example:
+ * <p>
+ * Input: [1,2,3]
+ * Output:
+ * [
+ * [1,2,3],
+ * [1,3,2],
+ * [2,1,3],
+ * [2,3,1],
+ * [3,1,2],
+ * [3,2,1]
+ * ]
+ * <p>
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/permutations
+ * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class GetAllPermutation {
 
