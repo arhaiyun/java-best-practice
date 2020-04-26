@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.ExecutiorService;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class CountListIntegerSum {
