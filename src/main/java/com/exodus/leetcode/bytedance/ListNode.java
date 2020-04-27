@@ -13,4 +13,21 @@ public class ListNode {
     ListNode(int x) {
         val = x;
     }
+
+    public ListNode add(ListNode node) {
+        ListNode curNode = this;
+        while (curNode.next != null) {
+            curNode = curNode.next;
+        }
+        curNode.next = node;
+        return this;
+    }
+
+    public static void printListNode(ListNode l) {
+        while (l != null) {
+            System.out.print(l.val + "->");
+            l = l.next;
+        }
+        System.out.println("NULL");
+    }
 }

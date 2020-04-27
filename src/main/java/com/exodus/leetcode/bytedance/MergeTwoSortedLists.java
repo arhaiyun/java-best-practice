@@ -49,12 +49,7 @@ public class MergeTwoSortedLists {
         return prevHead.next;
     }
 
-    public static void printListNode(ListNode l) {
-        while (l != null) {
-            System.out.print(l.val + "->");
-            l = l.next;
-        }
-    }
+
 
     public static void main(String[] args) {
         MergeTwoSortedLists mergeTwoSortedLists = new MergeTwoSortedLists();
@@ -68,7 +63,16 @@ public class MergeTwoSortedLists {
         l2.next.next = new ListNode(4);
         l2.next.next.next = null;
 
-        printListNode(mergeTwoSortedLists.mergeTwoLists(l1, l2));
-//        printListNode(mergeTwoSortedLists.mergeTwoLists2(l1, l2));
+        ListNode.printListNode(mergeTwoSortedLists.mergeTwoLists(l1, l2));
+
+        l1 = new ListNode(1);
+        l1.add(new ListNode(2));
+        l1.add(new ListNode(4));
+
+        l2 = new ListNode(1);
+        l2.add(new ListNode(3));
+        l2.add(new ListNode(4));
+
+        ListNode.printListNode(mergeTwoSortedLists.mergeTwoLists2(l1, l2));
     }
 }
