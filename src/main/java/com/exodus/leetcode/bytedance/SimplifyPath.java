@@ -8,7 +8,9 @@ public class SimplifyPath {
         Deque<String> stack = new LinkedList<>();
         for (String item : path.split("/")) {
             if (item.equals("..")) {
-                if (!stack.isEmpty()) stack.pop();
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
             } else if (!item.isEmpty() && !item.equals(".")) {
                 stack.push(item);
             }

@@ -43,6 +43,7 @@ public class ReverseWords {
         int n = ss.length;
         StringBuilder ans = new StringBuilder();
         for (int i = n - 1; i >= 0; i--) {
+            //- string中多空格经过split(" ")会出现空串的情况
             if (ss[i].length() == 0) continue;
             ans.append(ss[i]).append(" ");
         }
@@ -55,7 +56,7 @@ public class ReverseWords {
 
     public static void main(String[] args) {
         ReverseWords solution = new ReverseWords();
-        String s = "a good   example";
+        String s = "a good        example";
         System.out.printf("Reverse words:%s", solution.reverseWords(s));
     }
 }

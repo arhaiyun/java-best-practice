@@ -43,12 +43,14 @@ public class SearchInSortedArray {
                 return mid;
             }
             if (nums[start] <= nums[mid]) {
+                // 寻找局部有序区间-1
                 if (target >= nums[start] && target < nums[mid]) {
                     end = mid - 1;
                 } else {
                     start = mid + 1;
                 }
             } else {
+                // 寻找局部有序区间-2
                 if (target > nums[mid] && target <= nums[end]) {
                     start = mid + 1;
                 } else {

@@ -46,9 +46,7 @@ public class StringMultiply {
             // 保存 num2 第i位数字与 num1 相乘的结果
             StringBuilder temp = new StringBuilder();
             // 补 0
-            for (int j = 0; j < num2.length() - 1 - i; j++) {
-                temp.append(0);
-            }
+            temp.append("0".repeat(Math.max(0, num2.length() - 1 - i)));
             int n2 = num2.charAt(i) - '0';
 
             // num2 的第 i 位数字 n2 与 num1 相乘

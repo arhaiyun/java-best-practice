@@ -26,6 +26,7 @@ public class LongestConsecutive {
     public static int longestConsecutive(int[] nums) {
         Set<Integer> numSet = new HashSet<Integer>();
 
+        // 通过HashSet进行去重
         for (int num : nums) {
             numSet.add(num);
         }
@@ -33,10 +34,11 @@ public class LongestConsecutive {
         int result = 0;
 
         for (int num : numSet) {
+            // 寻找从当前数值开始的连续序列
             if (!numSet.contains(num - 1)) {
                 int curNum = num;
                 int curStreak = 1;
-
+                // 检查是否在Set中包含连续的序列
                 while (numSet.contains(curNum + 1)) {
                     curNum++;
                     curStreak++;

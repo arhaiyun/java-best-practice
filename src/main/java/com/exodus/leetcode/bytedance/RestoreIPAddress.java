@@ -1,18 +1,16 @@
 package com.exodus.leetcode.bytedance;
 
 /**
- *
  * Given a string containing only digits, restore it by returning all possible valid IP address combinations.
- *
+ * <p>
  * Example:
- *
+ * <p>
  * Input: "25525511135"
  * Output: ["255.255.11.135", "255.255.111.35"]
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/restore-ip-addresses
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
- *
  */
 
 import java.util.ArrayList;
@@ -30,8 +28,9 @@ public class RestoreIPAddress {
                         String tmp2 = s.substring(i + 1, j + 1);
                         String tmp3 = s.substring(j + 1, k + 1);
                         String tmp4 = s.substring(k + 1);
-                        if (helper(tmp1) && helper(tmp2) && helper(tmp3) && helper(tmp4))
+                        if (helper(tmp1) && helper(tmp2) && helper(tmp3) && helper(tmp4)) {
                             res.add(tmp1 + "." + tmp2 + "." + tmp3 + "." + tmp4);
+                        }
                     }
                 }
             }
@@ -40,8 +39,11 @@ public class RestoreIPAddress {
     }
 
     private boolean helper(String tmp) {
-        if (tmp == null || tmp.length() == 0 || tmp.length() > 3 || (tmp.charAt(0) == '0' && tmp.length() > 1) || Integer.parseInt(tmp) > 255)
+        if (tmp == null || tmp.length() == 0 || tmp.length() > 3
+                || (tmp.charAt(0) == '0' && tmp.length() > 1)
+                || Integer.parseInt(tmp) > 255) {
             return false;
+        }
         return true;
     }
 

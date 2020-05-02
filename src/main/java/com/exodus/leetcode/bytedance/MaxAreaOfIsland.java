@@ -27,6 +27,7 @@ package com.exodus.leetcode.bytedance;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class MaxAreaOfIsland {
+
     public int maxAreaOfIsland(int[][] grid) {
         int res = 0;
         for (int i = 0; i < grid.length; i++) {
@@ -52,11 +53,13 @@ public class MaxAreaOfIsland {
         num += dfs(i - 1, j, grid);
         num += dfs(i, j + 1, grid);
         num += dfs(i, j - 1, grid);
+
         return num;
     }
 
     public static void main(String[] args) {
         MaxAreaOfIsland instance = new MaxAreaOfIsland();
+
         int[][] grid = {{0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
                 {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},

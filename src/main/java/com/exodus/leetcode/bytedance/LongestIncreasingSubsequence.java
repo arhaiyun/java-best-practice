@@ -27,10 +27,11 @@ public class LongestIncreasingSubsequence {
         int[] dp = new int[nums.length];
         // dp 数组全都初始化为 1
         Arrays.fill(dp, 1);
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 1; i < nums.length; i++) {
             for (int j = 0; j < i; j++) {
-                if (nums[i] > nums[j])
+                if (nums[i] > nums[j]) {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
             }
         }
 
@@ -42,8 +43,7 @@ public class LongestIncreasingSubsequence {
     }
 
     public static void main(String[] args) {
-        LongestIncreasingSubsequence instance = new LongestIncreasingSubsequence();
         int[] nums = new int[]{10, 9, 2, 5, 3, 7, 101, 18};
-        System.out.println(instance.lengthOfLIS(nums));
+        System.out.println(lengthOfLIS(nums));
     }
 }

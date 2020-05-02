@@ -25,10 +25,11 @@ import java.util.PriorityQueue;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class FindKthLargest {
+
     public static int findKthLargest(int[] nums, int k) {
-        PriorityQueue<Integer> heap = new PriorityQueue<Integer>(); // 底层数据结构默认小跟堆
-//        PriorityQueue<Integer> heap = new PriorityQueue<Integer>((x, y) -> x - y); // 小跟堆
-//        PriorityQueue<Integer> heap = new PriorityQueue<Integer>((x, y) -> y - x);  // 大根堆
+        PriorityQueue<Integer> heap = new PriorityQueue<Integer>(); // PriorityQueue底层数据结构默认小跟堆
+        // PriorityQueue<Integer> heap = new PriorityQueue<Integer>((x, y) -> x - y); // 小跟堆
+        // PriorityQueue<Integer> heap = new PriorityQueue<Integer>((x, y) -> y - x);  // 大根堆
         for (int num : nums) {
             heap.offer(num);
             if (heap.size() > k) {
@@ -41,8 +42,8 @@ public class FindKthLargest {
     public static void main(String[] args) {
         int[] nums = new int[]{3, 2, 1, 5, 6, 4};
         int k = 2;
-//        int[] nums = new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6};
-//        int k = 4;
+        // int[] nums = new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6};
+        // int k = 4;
         System.out.println(findKthLargest(nums, k));
     }
 }

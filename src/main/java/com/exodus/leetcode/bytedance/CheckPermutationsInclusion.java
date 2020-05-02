@@ -36,9 +36,11 @@ public class CheckPermutationsInclusion {
         if (s2 == null || s2.length() < s1.length()) {
             return false;
         }
+
         int s1Len = s1.length();
         int s2Len = s2.length();
 
+        // 从长串中截取相应长度的字符串与短串对比是否含有相同的字符组合
         for (int i = 0; i <= s2Len - s1Len; i++) {
             if (checkPermutation(s1, s2.substring(i, i + s1Len))) {
                 return true;
@@ -47,6 +49,11 @@ public class CheckPermutationsInclusion {
         return false;
     }
 
+    /**
+     * @param s1
+     * @param s2
+     * @return 两个字符串是否含有相同的字符组合
+     */
     public boolean checkPermutation(String s1, String s2) {
         char[] c1 = s1.toCharArray();
         Arrays.sort(c1);
@@ -55,6 +62,11 @@ public class CheckPermutationsInclusion {
         return new String(c1).equals(new String(c2));
     }
 
+    /**
+     * @param S
+     * @return 返回字符串的所有排列组合可能
+     * abc-> [abc, bac, cba, acb, bca, cab]
+     */
     public String[] permutation(String S) {
         List<String> list = new ArrayList<>();
         list.add(S);
@@ -66,7 +78,7 @@ public class CheckPermutationsInclusion {
                 }
             }
         }
-        return list.toArray(new String[list.size()]);
+        return list.toArray(new String[0]);
     }
 
     private String swap(String s, int pos1, int pos2) {
@@ -85,5 +97,8 @@ public class CheckPermutationsInclusion {
 
         boolean inclusion = solution.checkInclusion(s1, s2);
         System.out.printf("LongestCommonPrefix:%b", inclusion);
+
+        System.out.println(Arrays.toString(solution.permutation("abc")));
+        // [abc, bac, cba, acb, bca, cab]
     }
 }
