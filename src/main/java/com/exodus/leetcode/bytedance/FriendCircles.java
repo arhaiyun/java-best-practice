@@ -38,14 +38,6 @@ import java.util.Queue;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class FriendCircles {
-    public void dfs(int[][] M, int[] visited, int i) {
-        for (int j = 0; j < M.length; j++) {
-            if (M[i][j] == 1 && visited[j] == 0) {
-                visited[j] = 1;
-                dfs(M, visited, j);
-            }
-        }
-    }
 
     public int findCircleNum(int[][] M) {
         int[] visited = new int[M.length];
@@ -57,6 +49,16 @@ public class FriendCircles {
             }
         }
         return count;
+    }
+
+    public void dfs(int[][] M, int[] visited, int i) {
+        for (int j = 0; j < M.length; j++) {
+            // 标记访问，对于没有访问的列进一步深度遍历
+            if (M[i][j] == 1 && visited[j] == 0) {
+                visited[j] = 1;
+                dfs(M, visited, j);
+            }
+        }
     }
 
     public int findCircleNum2(int[][] M) {

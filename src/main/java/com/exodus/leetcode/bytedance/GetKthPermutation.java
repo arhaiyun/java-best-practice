@@ -86,7 +86,7 @@ public class GetKthPermutation {
         visited[i - 1] = true;// 标记为已访问
         if (n - 1 > 0) {
             // offset = 0 时，则取第 i 组的第 f 个排列，否则取第 i 组的第 offset 个排列
-            return String.valueOf(i) + recursive(n - 1, f / (n - 1), offset == 0 ? f : offset, visited);
+            return i + recursive(n - 1, f / (n - 1), offset == 0 ? f : offset, visited);
         } else {
             // 最后一数字
             return String.valueOf(i);

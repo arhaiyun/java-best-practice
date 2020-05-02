@@ -16,12 +16,14 @@ package com.exodus.leetcode.bytedance;
 
 
 public class MergeTwoSortedLists {
+
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null) {
             return l2;
         } else if (l2 == null) {
             return l1;
         } else if (l1.val < l2.val) {
+            // 递归合并剩余部分
             l1.next = mergeTwoLists(l1.next, l2);
             return l1;
         } else {
@@ -44,14 +46,13 @@ public class MergeTwoSortedLists {
             }
             prev = prev.next;
         }
-        prev.next = l1 == null ? l2 : l1;
+        prev.next = (l1 == null) ? l2 : l1;
 
         return prevHead.next;
     }
 
-
-
     public static void main(String[] args) {
+
         MergeTwoSortedLists mergeTwoSortedLists = new MergeTwoSortedLists();
         ListNode l1 = new ListNode(1);
         l1.next = new ListNode(2);

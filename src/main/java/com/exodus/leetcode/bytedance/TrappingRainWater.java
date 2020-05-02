@@ -20,37 +20,8 @@ package com.exodus.leetcode.bytedance;
  */
 public class TrappingRainWater {
 
+    // 按列去计算积水高度
     public int trap(int[] height) {
-        int sum = 0;
-        int max = getMax(height);       //找到最大的高度，以便遍历。
-        for (int i = 1; i <= max; i++) {
-            boolean isStart = false;    //标记是否开始更新 temp
-            int temp_sum = 0;
-            for (int value : height) {
-                if (isStart && value < i) {
-                    temp_sum++;
-                }
-                if (value >= i) {
-                    sum = sum + temp_sum;
-                    temp_sum = 0;
-                    isStart = true;
-                }
-            }
-        }
-        return sum;
-    }
-
-    private int getMax(int[] height) {
-        int max = 0;
-        for (int value : height) {
-            if (value > max) {
-                max = value;
-            }
-        }
-        return max;
-    }
-
-    public int trap2(int[] height) {
         int sum = 0;
         //最两端的列不用考虑，因为一定不会有水。所以下标从 1 到 length - 2
         for (int i = 1; i < height.length - 1; i++) {
@@ -76,6 +47,39 @@ public class TrappingRainWater {
             }
         }
         return sum;
+    }
+
+    // 一行一行的去计算积水高度
+    public int trap2(int[] height) {
+        int sum = 0;
+        //找到最大的高度，以便遍历。
+        int max = getMax(height);
+        for (int i = 1; i <= max; i++) {
+            //标记是否开始更新temp
+            boolean isStart = false;
+            int temp_sum = 0;
+            for (int value : height) {
+                if (isStart && value < i) {
+                    temp_sum++;
+                }
+                if (value >= i) {
+                    sum = sum + temp_sum;
+                    temp_sum = 0;
+                    isStart = true;
+                }
+            }
+        }
+        return sum;
+    }
+
+    private int getMax(int[] height) {
+        int max = 0;
+        for (int value : height) {
+            if (value > max) {
+                max = value;
+            }
+        }
+        return max;
     }
 
     public int trap3(int[] height) {

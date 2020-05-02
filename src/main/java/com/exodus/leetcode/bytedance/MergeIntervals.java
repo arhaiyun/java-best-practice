@@ -26,6 +26,7 @@ import java.util.Arrays;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class MergeIntervals {
+
     public int[][] merge(int[][] intervals) {
         // 先按照区间起始位置排序
         Arrays.sort(intervals, (v1, v2) -> v1[0] - v2[0]);
