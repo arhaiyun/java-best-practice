@@ -116,59 +116,79 @@ public class SortMethods {
      * @param right
      * @return
      */
-    public static int[] merge(int[] left, int[] right) {
+//    public static int[] merge(int[] left, int[] right) {
+//        int[] result = new int[left.length + right.length];
+//        for (int index = 0, i = 0, j = 0; index < result.length; index++) {
+//            if (i >= left.length)
+//                result[index] = right[j++];
+//            else if (j >= right.length)
+//                result[index] = left[i++];
+//            else if (left[i] > right[j])
+//                result[index] = right[j++];
+//            else
+//                result[index] = left[i++];
+//        }
+//        return result;
+//    }
+
+    private static int[] merge(int[] left, int[] right) {
         int[] result = new int[left.length + right.length];
-        for (int index = 0, i = 0, j = 0; index < result.length; index++) {
-            if (i >= left.length)
-                result[index] = right[j++];
-            else if (j >= right.length)
-                result[index] = left[i++];
-            else if (left[i] > right[j])
-                result[index] = right[j++];
-            else
-                result[index] = left[i++];
+        int i = 0, j = 0, k = 0;
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+                result[k++] = left[i++];
+            } else {
+                result[k++] = right[j++];
+            }
+        }
+        while (i < left.length) {
+            result[k++] = left[i++];
+        }
+        while (j < right.length) {
+            result[k++] = right[j++];
         }
         return result;
     }
 
-
     /**
-     * 快速排序方法
+     * 快速排序算法
      *
-     * @param array
-     * @param start
-     * @param end
+     * @param arr
+     * @param left
+     * @param right
      * @return
      */
-    public static int[] QuickSort(int[] array, int start, int end) {
-        if (array.length < 1 || start < 0 || end >= array.length || start > end) return null;
-        int smallIndex = partition(array, start, end);
-        if (smallIndex > start)
-            QuickSort(array, start, smallIndex - 1);
-        if (smallIndex < end)
-            QuickSort(array, smallIndex + 1, end);
-        return array;
+    private static int partition(int[] arr, int left, int right) {
+        int temp = arr[left];
+        while (right > left) {
+            // 先判断基准数和后面的数依次比较
+            while (temp <= arr[right] && left < right) {
+                right--;
+            }
+            // 当基准数大于了 arr[right]，则填坑
+            if (left < right) {
+                arr[left] = arr[right];
+                left++;
+            }
+            // 现在是 arr[right] 需要填坑了
+            while (temp >= arr[left] && left < right) {
+                left++;
+            }
+            if (left < right) {
+                arr[right] = arr[left];
+                right--;
+            }
+        }
+        arr[left] = temp;
+        return left;
     }
 
-    /**
-     * 快速排序算法——partition
-     *
-     * @param array
-     * @param start
-     * @param end
-     * @return
-     */
-    public static int partition(int[] array, int start, int end) {
-        int pivot = (int) (start + Math.random() * (end - start + 1));
-        int smallIndex = start - 1;
-        swap(array, pivot, end);
-        for (int i = start; i <= end; i++)
-            if (array[i] <= array[end]) {
-                smallIndex++;
-                if (i > smallIndex)
-                    swap(array, i, smallIndex);
-            }
-        return smallIndex;
+    private static void quickSort(int[] arr, int left, int right) {
+        if (arr == null || left >= right || arr.length <= 1)
+            return;
+        int pivot = partition(arr, left, right);
+        quickSort(arr, left, pivot);
+        quickSort(arr, pivot + 1, right);
     }
 
     /**
@@ -255,11 +275,11 @@ public class SortMethods {
             if (array[i] < min)
                 min = array[i];
         }
-        bias = 0 - min;
+        bias = -min;
         int[] bucket = new int[max - min + 1];
         Arrays.fill(bucket, 0);
-        for (int i = 0; i < array.length; i++) {
-            bucket[array[i] + bias]++;
+        for (int value : array) {
+            bucket[value + bias]++;
         }
         int index = 0, i = 0;
         while (index < array.length) {
