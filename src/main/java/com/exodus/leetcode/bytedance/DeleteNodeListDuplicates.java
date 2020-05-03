@@ -4,6 +4,20 @@ package com.exodus.leetcode.bytedance;
  * @author arhaiyun
  * @version 1.0
  * @date 2020/5/3 22:38
+ *
+ * 83. Remove Duplicates from Sorted List
+ * Given a sorted linked list, delete all duplicates such that each element appear only once.
+ *
+ * Example 1:
+ *
+ * Input: 1->1->2
+ * Output: 1->2
+ * Example 2:
+ *
+ * Input: 1->1->2->3->3
+ * Output: 1->2->3
+ *
+ *
  */
 public class DeleteNodeListDuplicates {
     public ListNode deleteDuplicates(ListNode head) {
