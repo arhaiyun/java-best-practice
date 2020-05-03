@@ -30,9 +30,9 @@ public class BTreeAlgos {
         while (!treeStack.isEmpty()) {
             TreeNode tempNode = treeStack.pop();
             if (tempNode != null) {
-                resultList.add(tempNode.val);//访问根节点
-                treeStack.push(tempNode.right); //入栈右孩子
-                treeStack.push(tempNode.left);//入栈左孩子
+                resultList.add(tempNode.val); //访问根节点
+                treeStack.push(tempNode.right); //注意！入栈右孩子！！
+                treeStack.push(tempNode.left); //入栈左孩子
             }
         }
         return resultList;
@@ -56,8 +56,11 @@ public class BTreeAlgos {
         List<Integer> visitedList = new ArrayList<>();
         Map<TreeNode, Integer> visitedNodeMap = new HashMap<>();//保存已访问的节点
         Stack<TreeNode> toBeVisitedNodes = new Stack<>();//待访问的节点
-        if (root == null)
+
+        if (root == null) {
             return visitedList;
+        }
+
         toBeVisitedNodes.push(root);
         while (!toBeVisitedNodes.isEmpty()) {
             TreeNode tempNode = toBeVisitedNodes.peek(); //注意这里是peek而不是pop
@@ -77,22 +80,32 @@ public class BTreeAlgos {
     }
 
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<Integer>();
-
+        List<Integer> resultList = new ArrayList<Integer>();
         Stack<TreeNode> stack = new Stack<TreeNode>();
-        TreeNode cur = root;
+        TreeNode curNode = root;
 
-        while (cur != null || !stack.empty()) {
-            while (cur != null) {
-                stack.add(cur);
-                cur = cur.left;
+        while (curNode != null || !stack.empty()) {
+            while (curNode != null) {
+                stack.add(curNode);
+                curNode = curNode.left;
             }
-            cur = stack.pop();
-            list.add(cur.val);
-            cur = cur.right;
+            curNode = stack.pop();
+            resultList.add(curNode.val);
+            curNode = curNode.right;
         }
 
-        return list;
+        return resultList;
+    }
+
+    /**
+     * 递归后序遍历
+     */
+    public void postOrderRecursion(TreeNode node) {
+        if (node == null) //如果结点为空则返回
+            return;
+        inorderRecursion(node.left);//访问左孩子
+        inorderRecursion(node.right);//访问右孩子
+        visit(node);//访问根节点
     }
 
     /**
@@ -134,20 +147,26 @@ public class BTreeAlgos {
         return resultList;
     }
 
+    /**
+     * 先采用类似先序遍历，先遍历根结点再右孩子最后左孩子，最后把遍历的序列逆转即得到了后序遍历
+     *（先序是先根结点再左孩子最后右孩子）
+     * @param root
+     * @return
+     */
     public List<Integer> postorderTraversal(TreeNode root) {
         Deque<TreeNode> stack = new LinkedList<>();
         stack.push(root);
-        List<Integer> ret = new ArrayList<>();
+        List<Integer> resultList = new ArrayList<>();
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
             if (node != null) {
-                ret.add(node.val);
-                stack.push(node.left);
+                resultList.add(node.val);
+                stack.push(node.left);  // 注意这个位置与先序遍历的不同，此处为先压栈左节点
                 stack.push(node.right);
             }
         }
-        Collections.reverse(ret);
-        return ret;
+        Collections.reverse(resultList);
+        return resultList;
     }
 
     public List<List<Integer>> levelOrder(TreeNode root) {

@@ -1,4 +1,4 @@
-package com.exodus.fundamentals.binarytree;
+package com.exodus.leetcode.alibaba;
 
 import com.exodus.leetcode.alibaba.CountWordsThread;
 

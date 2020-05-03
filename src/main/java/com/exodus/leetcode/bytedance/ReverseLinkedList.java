@@ -22,6 +22,7 @@ public class ReverseLinkedList {
             return head;
         }
 
+        // 递归调用
         ListNode curNode = reverseList(head.next);
         head.next.next = head;
         head.next = null;
