@@ -12,29 +12,6 @@ import java.util.stream.IntStream;
 
 public class ForkJoinTest {
 
-    public static void main(String... args) throws InterruptedException, ExecutionException {
-        //模拟一个“很大”的List，这里用直接用数组代替了（题目里其实也没说明白“很大”到底是什么概念，实际上太大了会OOM，
-        // 但我觉得这道题主要考查的是对并发编程的基本思路吧，应该不会考察太深的，
-        // 所以不用在意了，要是确实是要把怎么样避免OOM也考虑到的话暂时还没想到应该怎样解决）
-        int[] array = IntStream.rangeClosed(0, 100_000_000).toArray();
-
-        //简单粗暴的做法
-        int sum = 0;
-        for (int value : array) {
-            sum += value;
-        }
-        System.out.println(sum);
-
-        //Fork/Join的做法
-        ForkJoinPool forkJoinPool = new ForkJoinPool(); //起一个数量等于可用CPU核数的池子（对应题目中“充分利用多核”）
-        Task task = new Task(0, array.length, 10_000, array);
-
-        Future<Integer> future = forkJoinPool.submit(task); //提交Task
-        System.out.println(future.get()); //获得返回值
-
-        forkJoinPool.shutdown(); //关闭池子
-    }
-
     static class Task extends RecursiveTask<Integer> {
 
         public static final int DEFAULT_THRESHOLD = 1000;
@@ -69,5 +46,28 @@ public class ForkJoinTest {
                 return leftHandTask.join() + rightHandTask.join(); //最后Join得到结果
             }
         }
+    }
+
+    public static void main(String... args) throws InterruptedException, ExecutionException {
+        //模拟一个“很大”的List，这里用直接用数组代替了（题目里其实也没说明白“很大”到底是什么概念，实际上太大了会OOM，
+        // 但我觉得这道题主要考查的是对并发编程的基本思路吧，应该不会考察太深的，
+        // 所以不用在意了，要是确实是要把怎么样避免OOM也考虑到的话暂时还没想到应该怎样解决）
+        int[] array = IntStream.rangeClosed(0, 100_000_000).toArray();
+
+        //简单粗暴的做法
+        int sum = 0;
+        for (int value : array) {
+            sum += value;
+        }
+        System.out.println(sum);
+
+        //Fork/Join的做法
+        ForkJoinPool forkJoinPool = new ForkJoinPool(); //起一个数量等于可用CPU核数的池子（对应题目中“充分利用多核”）
+        Task task = new Task(0, array.length, 10_000, array);
+
+        Future<Integer> future = forkJoinPool.submit(task); //提交Task
+        System.out.println(future.get()); //获得返回值
+
+        forkJoinPool.shutdown(); //关闭池子
     }
 }
