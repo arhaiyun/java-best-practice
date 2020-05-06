@@ -36,27 +36,26 @@ package com.exodus.leetcode.bytedance;
  * <p>
  * 1 <= prices.length <= 3 * 10 ^ 4
  * 0 <= prices[i] <= 10 ^ 4
- *
- *
+ * <p>
+ * <p>
  * base case：
  * dp[-1][k][0] = dp[i][0][0] = 0
  * dp[-1][k][1] = dp[i][0][1] = -infinity
- *
+ * <p>
  * 状态转移方程：
  * dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])
  * dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])
- *
- *
+ * <p>
+ * <p>
  * ---> k 为无穷大
  * dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])
  * dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i])
- *
- *
+ * <p>
+ * <p>
  * 作者：labuladong
  * 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-l-3/
  * 来源：力扣（LeetCode）
  * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
- *
  */
 public class StockMaxProfit_II {
 
@@ -68,13 +67,24 @@ public class StockMaxProfit_II {
         int profit = 0;
 
         for (int i = 1; i < prices.length; i++) {
-            int daily = prices[i] - prices[i-1];
-            if(daily > 0) {
+            int daily = prices[i] - prices[i - 1];
+            if (daily > 0) {
                 profit += daily;
             }
         }
 
         return profit;
+    }
+
+    public int maxProfit_k_inf(int[] prices) {
+        int n = prices.length;
+        int dp_i_0 = 0, dp_i_1 = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            int temp = dp_i_0;
+            dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);
+            dp_i_1 = Math.max(dp_i_1, temp - prices[i]);
+        }
+        return dp_i_0;
     }
 
 }

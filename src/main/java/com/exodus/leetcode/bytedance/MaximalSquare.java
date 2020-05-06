@@ -18,6 +18,9 @@ package com.exodus.leetcode.bytedance;
  * 1 0 0 1 0
  * <p>
  * Output: 4
+ *
+ * https://leetcode-cn.com/problems/maximal-square/solution/li-jie-san-zhe-qu-zui-xiao-1-by-lzhlyle/
+ *
  */
 public class MaximalSquare {
     public int maximalSquare(char[][] matrix) {
