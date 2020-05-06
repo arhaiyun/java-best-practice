@@ -22,7 +22,6 @@ public class SkipList<T> {
         head.key = null;
         head.value = null;
         head.forward = new SkipNode[maxLevel];
-
     }
 
     public SkipList() {

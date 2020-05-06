@@ -69,6 +69,7 @@ public class SortLinkList {
         l1.add(new ListNode(3));
         l1.add(new ListNode(2));
 
+        ListNode.printListNode(l1);
         ListNode.printListNode(sortLinkList.sortList(l1));
     }
 }

@@ -102,5 +102,4 @@ public class CountListIntegerSum {
         long sum = countListIntegerSum.getIntegerSum();
         System.out.println("List中所有整数的和为:" + sum);
     }
-
 }

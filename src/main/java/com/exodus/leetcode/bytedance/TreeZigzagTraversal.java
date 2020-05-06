@@ -18,8 +18,8 @@ import java.util.Queue;
  * 3
  * / \
  * 9  20
- *   /  \
- *  15   7
+ * /  \
+ * 15   7
  * return its zigzag level order traversal as:
  * [
  * [3],
@@ -45,6 +45,7 @@ public class TreeZigzagTraversal {
             int count = queue.size();
             for (int i = 0; i < count; i++) {
                 TreeNode node = queue.poll();
+                assert node != null;
                 if (!isReverse) {
                     curLevel.add(node.val);
                 } else {
