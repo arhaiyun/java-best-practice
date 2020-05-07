@@ -1,4 +1,4 @@
-package com.exodus.fundamentals;
+package com.exodus.leetcode.bytedance;
 
 /**
  * @author arhaiyun
