@@ -85,6 +85,7 @@ public class LongestPalindromicSubstring {
 
   // 马拉车算法
   public String longestPalindrome2(String s) {
+
     String T = preProcess(s);
     int n = T.length();
     int[] P = new int[n];
