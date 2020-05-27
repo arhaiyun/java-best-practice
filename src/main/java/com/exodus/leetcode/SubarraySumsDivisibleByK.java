@@ -42,4 +42,11 @@ public class SubarraySumsDivisibleByK {
     }
     return ans;
   }
+
+  public static void main(String[] args) {
+    int[] A = new int[] { 4, 5, 0, -2, -3, 1 };
+    int K = 5;
+    SubarraySumsDivisibleByK instance = new SubarraySumsDivisibleByK();
+    System.out.println(instance.subarraysDivByK(A, K));
+  }
 }
